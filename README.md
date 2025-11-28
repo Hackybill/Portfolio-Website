@@ -194,8 +194,8 @@ The system logs all activities including:
 ## 📞 Support
 
 For technical support or security concerns:
-- Email: admin@futuristic.com
-- Phone: +1 (555) 123-4567
+- Email: CyberArt3333@gmail.com
+- Phone: +91 8302277030
 
 ## 📄 License
 
