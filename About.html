@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Futuristic Website</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="auth-guard.js"></script>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="about.html" class="nav-link active">About</a></li>
+            <li><a href="services.html" class="nav-link">Services</a></li>
+            <li><a href="portfolio.html" class="nav-link">Portfolio</a></li>
+            <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+        <div class="auth-buttons">
+            <a href="login.html" class="auth-btn login-btn">Login</a>
+            <a href="register.html" class="auth-btn register-btn">Register</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">About Us</h1>
+            <p class="hero-subtitle">Innovating the future of technology</p>
+        </div>
+    </section>
+
+    <!-- About Content -->
+    <section class="about-content">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-text">
+                    <h2>Our Story</h2>
+                    <p>We are pioneers in futuristic technology, creating innovative solutions that shape tomorrow's digital landscape. Our journey began with a simple vision: to bridge the gap between imagination and reality through cutting-edge technology.</p>
+                    <p>Founded with a vision to revolutionize the tech industry, we combine cutting-edge design with advanced functionality. We specialize in creating immersive digital experiences that push the boundaries of what's possible.</p>
+                    <div class="mission-box text-box hover-glow">
+                        <h3>🎯 Our Mission</h3>
+                        <p>To empower businesses and individuals with next-generation technology solutions that drive innovation and create lasting impact in the digital world.</p>
+                    </div>
+                </div>
+                <div class="about-stats">
+                    <div class="stat-item">
+                        <h3>500+</h3>
+                        <p>Projects Completed</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>50+</h3>
+                        <p>Team Members</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>10+</h3>
+                        <p>Years Experience</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values-section">
+        <div class="container">
+            <div class="text-box slide-in-down">
+                <h2>Our Core Values</h2>
+            </div>
+            <div class="values-grid">
+                <div class="value-card text-box hover-slide">
+                    <div class="value-icon">🚀</div>
+                    <h3>Innovation First</h3>
+                    <p>We constantly push boundaries and explore new technologies to deliver groundbreaking solutions that exceed expectations.</p>
+                </div>
+                <div class="value-card text-box hover-slide">
+                    <div class="value-icon">🤝</div>
+                    <h3>Client Partnership</h3>
+                    <p>We build lasting relationships with our clients, working as partners to understand their unique needs and deliver tailored solutions.</p>
+                </div>
+                <div class="value-card text-box hover-slide">
+                    <div class="value-icon">⚡</div>
+                    <h3>Excellence</h3>
+                    <p>Quality is at the heart of everything we do. We maintain the highest standards in code, design, and user experience.</p>
+                </div>
+                <div class="value-card text-box hover-slide">
+                    <div class="value-icon">🌟</div>
+                    <h3>Future Ready</h3>
+                    <p>We stay ahead of technology trends, ensuring our solutions are scalable, sustainable, and ready for tomorrow's challenges.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <div class="text-box slide-in-left">
+                <h2>Meet Our Team</h2>
+                <p>Talented professionals dedicated to creating exceptional digital experiences</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-member text-box hover-float">
+                    <div class="member-image">
+                        <img src="Lokesh.jpg" alt="Team Member">
+                    </div>
+                    <h3>Lokesh Sharma</h3>
+                    <p class="member-role">Lead Developer</p>
+                    <p class="member-bio">Full-stack developer with expertise in modern web technologies and AI integration.</p>
+                </div>
+                <div class="team-member text-box hover-float">
+                    <div class="member-image">
+                        <img src="Harshit .png" alt="Team Member">
+                    </div>
+                    <h3>Harshit Kumawat</h3>
+                    <p class="member-role">UI/UX Designer</p>
+                    <p class="member-bio">Creative designer focused on creating intuitive and visually stunning user experiences.</p>
+                </div>
+                <div class="team-member text-box hover-float">
+                    <div class="member-image">
+                        <img src="Khushal .jpg" alt="Team Member">
+                    </div>
+                    <h3>Khushal Saraswat</h3>
+                    <p class="member-role">AI Specialist</p>
+                    <p class="member-bio">Machine learning expert developing intelligent solutions for complex business challenges.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Mouse trail effect
+        function initMouseTrail() {
+            document.addEventListener('mousemove', (e) => {
+                const trail = document.createElement('div');
+                trail.className = 'mouse-trail';
+                trail.style.left = e.clientX + 'px';
+                trail.style.top = e.clientY + 'px';
+                document.body.appendChild(trail);
+                
+                setTimeout(() => trail.remove(), 1000);
+            });
+        }
+
+        // Ripple effect on click
+        function initRippleEffect() {
+            document.addEventListener('click', (e) => {
+                const ripple = document.createElement('div');
+                ripple.className = 'ripple';
+                ripple.style.left = e.clientX + 'px';
+                ripple.style.top = e.clientY + 'px';
+                document.body.appendChild(ripple);
+                
+                setTimeout(() => ripple.remove(), 600);
+            });
+        }
+
+        // Floating elements
+        function createFloatingElements() {
+            for (let i = 0; i < 15; i++) {
+                const element = document.createElement('div');
+                element.className = 'floating-element';
+                element.style.left = Math.random() * 100 + '%';
+                element.style.animationDelay = Math.random() * 10 + 's';
+                element.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                document.body.appendChild(element);
+            }
+        }
+
+        // Scroll animations
+        function initScrollAnimations() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate');
+                    }
+                });
+            });
+            
+            document.querySelectorAll('.about-text, .stat-item, .value-card, .team-member').forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        // Initialize everything
+        document.addEventListener('DOMContentLoaded', function() {
+            initMouseTrail();
+            initRippleEffect();
+            createFloatingElements();
+            initScrollAnimations();
+        });
+    </script>
+
+</body>
+</html>

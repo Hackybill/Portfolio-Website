@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Futuristic Website</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="auth-guard.js"></script>
+    <script src="auth.js"></script>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="matrix-rain"></div>
+        <ul>
+            <li><a href="index.html" class="nav-link active" data-text="Home">Home</a></li>
+            <li><a href="about.html" class="nav-link" data-text="About">About</a></li>
+            <li><a href="services.html" class="nav-link" data-text="Services">Services</a></li>
+            <li><a href="portfolio.html" class="nav-link" data-text="Portfolio">Portfolio</a></li>
+            <li><a href="contact.html" class="nav-link" data-text="Contact">Contact</a></li>
+        </ul>
+        <div class="auth-buttons">
+            <a href="login.html" class="auth-btn login-btn">Login</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-bg"></div>
+        <div class="image-slider">
+            <div class="slide active"></div>
+            <div class="slide"></div>
+            <div class="slide"></div>
+            <div class="slide"></div>
+            <div class="slide"></div>
+        </div>
+        <div class="hero-content">
+            <div class="text-box slide-in-left">
+                <h1 class="hero-title">Welcome to the Future</h1>
+            </div>
+            <div class="text-box slide-in-right">
+                <p class="hero-subtitle" id="typingText"></p>
+            </div>
+            <div class="text-box slide-in-up">
+                <button class="hero-btn">Explore Now</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="text-box slide-in-down">
+            <h2>About Us</h2>
+        </div>
+        <div class="features">
+            <div class="feature-card text-box hover-glow">
+                <div class="feature-icon">🚀</div>
+                <div class="text-content">
+                    <h3>Innovation</h3>
+                    <p>Cutting-edge technology solutions for the modern world</p>
+                </div>
+            </div>
+            <div class="feature-card text-box hover-glow">
+                <div class="feature-icon">⚡</div>
+                <div class="text-content">
+                    <h3>Performance</h3>
+                    <p>Lightning-fast and optimized for maximum efficiency</p>
+                </div>
+            </div>
+            <div class="feature-card text-box hover-glow">
+                <div class="feature-icon">🎯</div>
+                <div class="text-content">
+                    <h3>Precision</h3>
+                    <p>Accurate and reliable results every time</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="text-box slide-in-left">
+            <h2>Our Services</h2>
+        </div>
+        <div class="service-grid">
+            <div class="service-card professional-box text-box hover-slide">
+                <div class="service-header">
+                    <div class="service-icon">🌐</div>
+                    <h3 class="typing-text" data-text="Web Development">Web Development</h3>
+                </div>
+                <div class="service-description typing-text" data-text="Full-stack web solutions with modern frameworks">Full-stack web solutions with modern frameworks</div>
+                <ul class="service-features">
+                    <li>React & Vue.js Development</li>
+                    <li>Node.js Backend Systems</li>
+                    <li>Progressive Web Applications</li>
+                    <li>E-commerce Platforms</li>
+                    <li>Custom CMS Solutions</li>
+                </ul>
+            </div>
+            <div class="service-card professional-box text-box hover-slide">
+                <div class="service-header">
+                    <div class="service-icon">📱</div>
+                    <h3 class="typing-text" data-text="Mobile Applications">Mobile Applications</h3>
+                </div>
+                <div class="service-description typing-text" data-text="Cross-platform mobile apps with native performance">Cross-platform mobile apps with native performance</div>
+                <ul class="service-features">
+                    <li>iOS & Android Development</li>
+                    <li>React Native Solutions</li>
+                    <li>Flutter Applications</li>
+                    <li>App Store Optimization</li>
+                    <li>Mobile UI/UX Design</li>
+                </ul>
+            </div>
+            <div class="service-card professional-box text-box hover-slide">
+                <div class="service-header">
+                    <div class="service-icon">🤖</div>
+                    <h3 class="typing-text" data-text="AI & Machine Learning">AI & Machine Learning</h3>
+                </div>
+                <div class="service-description typing-text" data-text="Intelligent systems powered by advanced algorithms">Intelligent systems powered by advanced algorithms</div>
+                <ul class="service-features">
+                    <li>Machine Learning Models</li>
+                    <li>Natural Language Processing</li>
+                    <li>Computer Vision Systems</li>
+                    <li>Predictive Analytics</li>
+                    <li>AI Chatbot Development</li>
+                </ul>
+            </div>
+            <div class="service-card professional-box text-box hover-slide">
+                <div class="service-header">
+                    <div class="service-icon">☁️</div>
+                    <h3 class="typing-text" data-text="Cloud Infrastructure">Cloud Infrastructure</h3>
+                </div>
+                <div class="service-description typing-text" data-text="Scalable cloud solutions for enterprise needs">Scalable cloud solutions for enterprise needs</div>
+                <ul class="service-features">
+                    <li>AWS & Azure Deployment</li>
+                    <li>DevOps & CI/CD Pipelines</li>
+                    <li>Microservices Architecture</li>
+                    <li>Container Orchestration</li>
+                    <li>Cloud Security Solutions</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="contact-container text-box hover-glow slide-in-up">
+            <div class="contact-header">
+                <h3>Get In Touch</h3>
+                <div class="contact-details">
+                    <div class="detail-item">
+                        <span class="icon">📧</span>
+                        <span>future@tech.com</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="icon">📱</span>
+                        <span>+1 (555) 123-4567</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="icon">📍</span>
+                        <span>Silicon Valley, CA</span>
+                    </div>
+                </div>
+            </div>
+            <form class="contact-form">
+                <div class="form-row">
+                    <div class="input-box">
+                        <input type="text" required>
+                        <label>Your Name</label>
+                    </div>
+                    <div class="input-box">
+                        <input type="email" required>
+                        <label>Your Email</label>
+                    </div>
+                </div>
+                <div class="input-box">
+                    <input type="text" required>
+                    <label>Subject</label>
+                </div>
+                <div class="input-box">
+                    <textarea required></textarea>
+                    <label>Your Message</label>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <script>
+        // Typing animation
+        function initTypingAnimation() {
+            const texts = [
+                'Advanced Technology Solutions',
+                'Innovative Digital Experiences',
+                'Next-Generation Applications',
+                'Futuristic Web Development'
+            ];
+            
+            const typingElement = document.getElementById('typingText');
+            let textIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+            
+            function type() {
+                const currentText = texts[textIndex];
+                
+                if (isDeleting) {
+                    typingElement.textContent = currentText.substring(0, charIndex - 1);
+                    charIndex--;
+                } else {
+                    typingElement.textContent = currentText.substring(0, charIndex + 1);
+                    charIndex++;
+                }
+                
+                let typeSpeed = isDeleting ? 50 : 100;
+                
+                if (!isDeleting && charIndex === currentText.length) {
+                    typeSpeed = 2000;
+                    isDeleting = true;
+                } else if (isDeleting && charIndex === 0) {
+                    isDeleting = false;
+                    textIndex = (textIndex + 1) % texts.length;
+                    typeSpeed = 500;
+                }
+                
+                setTimeout(type, typeSpeed);
+            }
+            
+            type();
+        }
+
+        // Mouse trail effect
+        function initMouseTrail() {
+            document.addEventListener('mousemove', (e) => {
+                const trail = document.createElement('div');
+                trail.className = 'mouse-trail';
+                trail.style.left = e.clientX + 'px';
+                trail.style.top = e.clientY + 'px';
+                document.body.appendChild(trail);
+                
+                setTimeout(() => trail.remove(), 1000);
+            });
+        }
+
+        // Parallax scrolling
+        function initParallax() {
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                const parallax = document.querySelector('.hero-bg');
+                const speed = scrolled * 0.5;
+                parallax.style.transform = `translateY(${speed}px)`;
+            });
+        }
+
+        // Tilt effect on cards
+        function initTiltEffect() {
+            document.querySelectorAll('.feature-card, .service-card, .portfolio-item').forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    const rotateX = (y - centerY) / 10;
+                    const rotateY = (centerX - x) / 10;
+                    
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(20px)`;
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px)';
+                });
+            });
+        }
+
+        // Ripple effect on click
+        function initRippleEffect() {
+            document.addEventListener('click', (e) => {
+                const ripple = document.createElement('div');
+                ripple.className = 'ripple';
+                ripple.style.left = e.clientX + 'px';
+                ripple.style.top = e.clientY + 'px';
+                document.body.appendChild(ripple);
+                
+                setTimeout(() => ripple.remove(), 600);
+            });
+        }
+
+        // Floating elements
+        function createFloatingElements() {
+            for (let i = 0; i < 20; i++) {
+                const element = document.createElement('div');
+                element.className = 'floating-element';
+                element.style.left = Math.random() * 100 + '%';
+                element.style.animationDelay = Math.random() * 10 + 's';
+                element.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                document.body.appendChild(element);
+            }
+        }
+
+        // Smooth scrolling
+        function initSmoothScrolling() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
+
+        // Scroll animations
+        function initScrollAnimations() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate');
+                    }
+                });
+            });
+            
+            document.querySelectorAll('.feature-card, .service-card, .portfolio-item').forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        // Particle system
+        function createParticles() {
+            const hero = document.querySelector('.hero');
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 10 + 's';
+                hero.appendChild(particle);
+            }
+        }
+
+        // Image slider with random 2K web design images
+        function initImageSlider() {
+            const images = [
+                'https://images.unsplash.com/photo-1559028006-448665bd7c7f?w=2048&h=1152&fit=crop&crop=entropy&auto=format&q=80',
+                'https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=2048&h=1152&fit=crop&crop=entropy&auto=format&q=80',
+                'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=2048&h=1152&fit=crop&crop=entropy&auto=format&q=80',
+                'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=2048&h=1152&fit=crop&crop=entropy&auto=format&q=80',
+                'https://images.unsplash.com/photo-1551650975-87deedd944c3?w=2048&h=1152&fit=crop&crop=entropy&auto=format&q=80'
+            ];
+            
+            const slides = document.querySelectorAll('.slide');
+            let currentSlide = 0;
+            
+            // Set initial images
+            slides.forEach((slide, index) => {
+                slide.style.backgroundImage = `linear-gradient(45deg, rgba(0, 243, 255, 0.3), rgba(255, 0, 128, 0.3)), url('${images[index]}')`;
+            });
+            
+            function nextSlide() {
+                slides[currentSlide].classList.remove('active');
+                currentSlide = (currentSlide + 1) % slides.length;
+                slides[currentSlide].classList.add('active');
+                
+                // Change to random image
+                const randomImage = images[Math.floor(Math.random() * images.length)];
+                slides[currentSlide].style.backgroundImage = `linear-gradient(45deg, rgba(0, 243, 255, 0.3), rgba(255, 0, 128, 0.3)), url('${randomImage}')`;
+            }
+            
+            setInterval(nextSlide, 4000);
+        }
+
+        // Service typing effects
+        function initServiceTyping() {
+            const typingElements = document.querySelectorAll('.typing-text');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const element = entry.target;
+                        const text = element.getAttribute('data-text');
+                        if (text) {
+                            typeText(element, text);
+                        }
+                    }
+                });
+            });
+            
+            typingElements.forEach(el => observer.observe(el));
+        }
+        
+        function typeText(element, text) {
+            element.textContent = '';
+            let i = 0;
+            
+            function type() {
+                if (i < text.length) {
+                    element.textContent += text.charAt(i);
+                    i++;
+                    setTimeout(type, 50);
+                }
+            }
+            
+            setTimeout(type, 300);
+        }
+
+        // Matrix Rain Effect
+        function createMatrixRain() {
+            const matrixContainer = document.querySelector('.matrix-rain');
+            const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
+            
+            function createColumn() {
+                const column = document.createElement('div');
+                column.className = 'matrix-column';
+                column.style.left = Math.random() * 100 + '%';
+                column.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                
+                let text = '';
+                for (let i = 0; i < Math.floor(Math.random() * 10 + 5); i++) {
+                    text += chars[Math.floor(Math.random() * chars.length)] + '<br>';
+                }
+                column.innerHTML = text;
+                
+                matrixContainer.appendChild(column);
+                
+                setTimeout(() => {
+                    column.remove();
+                }, 5000);
+            }
+            
+            setInterval(createColumn, 200);
+        }
+
+        // Initialize everything
+        document.addEventListener('DOMContentLoaded', function() {
+            createMatrixRain();
+            initTypingAnimation();
+            initImageSlider();
+            initServiceTyping();
+            initMouseTrail();
+            initParallax();
+            initTiltEffect();
+            initRippleEffect();
+            createFloatingElements();
+            initSmoothScrolling();
+            initScrollAnimations();
+            createParticles();
+        });
+    </script>
+
+</body>
+</html>

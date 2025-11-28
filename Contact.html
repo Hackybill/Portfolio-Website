@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Futuristic Website</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="about.html" class="nav-link">About</a></li>
+            <li><a href="services.html" class="nav-link">Services</a></li>
+            <li><a href="portfolio.html" class="nav-link">Portfolio</a></li>
+            <li><a href="contact.html" class="nav-link active">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Contact Us</h1>
+            <p class="hero-subtitle">Let's build the future together</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-page">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h2>Get In Touch</h2>
+                    <p class="contact-intro">Ready to start your next project? We'd love to hear from you. Reach out and let's create something amazing together.</p>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div>
+                            <h3>Email</h3>
+                            <p>cyberArt3333@gmail.com</p>
+                            <span class="contact-note">For project inquiries and collaborations</span>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📱</div>
+                        <div>
+                            <h3>Phone</h3>
+                            <p>+91 8302277030</p>
+                            <span class="contact-note">Available Mon-Fri, 9AM-6PM IST</span>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div>
+                            <h3>Location</h3>
+                            <p>Ajmer Rajasthan, India</p>
+                            <span class="contact-note">Remote work available worldwide</span>
+                        </div>
+                    </div>
+                    
+                    <div class="response-time text-box hover-glow">
+                        <h4>⚡ Quick Response</h4>
+                        <p>We typically respond within 24 hours. For urgent matters, please call directly.</p>
+                    </div>
+                    
+                    <div class="social-links">
+                        <a href="https://x.com/TC_UD_SNMP" class="social-link">Twitter</a>
+                        <a href="https://www.linkedin.com/in/lokesh-sharma-808a32323/" class="social-link">LinkedIn</a>
+                        <a href="https://www.instagram.com/satyaamvadaami/" class="social-link">Instagram</a>
+                    </div>
+                </div>
+                
+                <div class="contact-form-container">
+                    <h3>Send us a Message</h3>
+                    <p class="form-intro">Tell us about your project and we'll get back to you with a detailed proposal.</p>
+                    <form class="contact-form">
+                        <div class="form-group">
+                            <input type="text" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <select required>
+                                <option value="">Select Project Type</option>
+                                <option value="web">Web Development</option>
+                                <option value="mobile">Mobile App</option>
+                                <option value="ai">AI/ML Solution</option>
+                                <option value="cloud">Cloud Infrastructure</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Subject" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Tell us about your project requirements, timeline, and budget" rows="6" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="text-box slide-in-down">
+                <h2>Frequently Asked Questions</h2>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-item text-box hover-slide">
+                    <h3>🚀 What services do you offer?</h3>
+                    <p>We specialize in web development, mobile apps, AI/ML solutions, and cloud infrastructure. From concept to deployment, we handle the entire development lifecycle.</p>
+                </div>
+                <div class="faq-item text-box hover-slide">
+                    <h3>⏱️ What's your typical project timeline?</h3>
+                    <p>Project timelines vary based on complexity. Simple websites take 2-4 weeks, while complex applications can take 3-6 months. We provide detailed timelines during consultation.</p>
+                </div>
+                <div class="faq-item text-box hover-slide">
+                    <h3>💰 How do you handle pricing?</h3>
+                    <p>We offer competitive pricing based on project scope. We provide detailed quotes after understanding your requirements. Payment plans available for larger projects.</p>
+                </div>
+                <div class="faq-item text-box hover-slide">
+                    <h3>🔧 Do you provide ongoing support?</h3>
+                    <p>Yes! We offer maintenance packages and ongoing support to ensure your application stays updated, secure, and performs optimally.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Form submission with animation
+        function initContactForm() {
+            const form = document.querySelector('.contact-form');
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                const btn = form.querySelector('.submit-btn');
+                const originalText = btn.textContent;
+                
+                btn.textContent = 'Sending...';
+                btn.style.background = 'linear-gradient(45deg, var(--neon-purple), var(--neon-pink))';
+                
+                setTimeout(() => {
+                    btn.textContent = 'Message Sent!';
+                    btn.style.background = 'linear-gradient(45deg, var(--neon-green), var(--neon-cyan))';
+                    
+                    setTimeout(() => {
+                        btn.textContent = originalText;
+                        btn.style.background = '';
+                        form.reset();
+                    }, 2000);
+                }, 1500);
+            });
+        }
+
+        // Same animations as main page
+        function initMouseTrail() {
+            document.addEventListener('mousemove', (e) => {
+                const trail = document.createElement('div');
+                trail.className = 'mouse-trail';
+                trail.style.left = e.clientX + 'px';
+                trail.style.top = e.clientY + 'px';
+                document.body.appendChild(trail);
+                setTimeout(() => trail.remove(), 1000);
+            });
+        }
+
+        function initRippleEffect() {
+            document.addEventListener('click', (e) => {
+                const ripple = document.createElement('div');
+                ripple.className = 'ripple';
+                ripple.style.left = e.clientX + 'px';
+                ripple.style.top = e.clientY + 'px';
+                document.body.appendChild(ripple);
+                setTimeout(() => ripple.remove(), 600);
+            });
+        }
+
+        function createFloatingElements() {
+            for (let i = 0; i < 15; i++) {
+                const element = document.createElement('div');
+                element.className = 'floating-element';
+                element.style.left = Math.random() * 100 + '%';
+                element.style.animationDelay = Math.random() * 10 + 's';
+                element.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                document.body.appendChild(element);
+            }
+        }
+
+        function initScrollAnimations() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate');
+                    }
+                });
+            });
+            
+            document.querySelectorAll('.contact-item, .form-group, .contact-info h2, .faq-item, .response-time').forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        function initFormAnimations() {
+            const inputs = document.querySelectorAll('input, textarea');
+            inputs.forEach(input => {
+                input.addEventListener('focus', () => {
+                    input.style.borderColor = 'var(--neon-cyan)';
+                    input.style.boxShadow = '0 0 20px rgba(0, 243, 255, 0.3)';
+                });
+                
+                input.addEventListener('blur', () => {
+                    input.style.borderColor = 'rgba(0, 243, 255, 0.3)';
+                    input.style.boxShadow = 'none';
+                });
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            initContactForm();
+            initMouseTrail();
+            initRippleEffect();
+            createFloatingElements();
+            initScrollAnimations();
+            initFormAnimations();
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Futuristic Website</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Admin Navigation -->
+    <nav class="admin-navbar">
+        <div class="admin-logo">
+            <h2>🔐 Admin Panel</h2>
+        </div>
+        <div class="admin-user">
+            <span>Welcome, Admin</span>
+            <button class="logout-btn">Logout</button>
+        </div>
+    </nav>
+
+    <!-- Admin Sidebar -->
+    <div class="admin-layout">
+        <aside class="admin-sidebar">
+            <ul class="admin-menu">
+                <li><a href="#dashboard" class="menu-link active" data-section="dashboard">📊 Dashboard</a></li>
+                <li><a href="#users" class="menu-link" data-section="users">👥 Users</a></li>
+                <li><a href="#content" class="menu-link" data-section="content">📝 Content</a></li>
+                <li><a href="#messages" class="menu-link" data-section="messages">💬 Messages</a></li>
+                <li><a href="#analytics" class="menu-link" data-section="analytics">📈 Analytics</a></li>
+                <li><a href="#settings" class="menu-link" data-section="settings">⚙️ Settings</a></li>
+            </ul>
+        </aside>
+
+        <!-- Admin Main Content -->
+        <main class="admin-main">
+            <!-- Dashboard Section -->
+            <section id="dashboard" class="admin-section active">
+                <h1>Dashboard Overview</h1>
+                <div class="stats-grid">
+                    <div class="stat-card text-box hover-glow">
+                        <div class="stat-icon">👥</div>
+                        <div class="stat-info">
+                            <h3>1,234</h3>
+                            <p>Total Users</p>
+                        </div>
+                    </div>
+                    <div class="stat-card text-box hover-glow">
+                        <div class="stat-icon">📊</div>
+                        <div class="stat-info">
+                            <h3>5,678</h3>
+                            <p>Page Views</p>
+                        </div>
+                    </div>
+                    <div class="stat-card text-box hover-glow">
+                        <div class="stat-icon">💬</div>
+                        <div class="stat-info">
+                            <h3>89</h3>
+                            <p>Messages</p>
+                        </div>
+                    </div>
+                    <div class="stat-card text-box hover-glow">
+                        <div class="stat-icon">🚀</div>
+                        <div class="stat-info">
+                            <h3>42</h3>
+                            <p>Projects</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="recent-activity text-box">
+                    <h3>Recent Activity</h3>
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <span class="activity-time">2 min ago</span>
+                            <span class="activity-text">New user registered: john@example.com</span>
+                        </div>
+                        <div class="activity-item">
+                            <span class="activity-time">15 min ago</span>
+                            <span class="activity-text">Contact form submitted by Sarah</span>
+                        </div>
+                        <div class="activity-item">
+                            <span class="activity-time">1 hour ago</span>
+                            <span class="activity-text">Portfolio updated with new project</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Users Section -->
+            <section id="users" class="admin-section">
+                <h1>User Management</h1>
+                <div class="section-actions">
+                    <button class="action-btn">Add User</button>
+                    <input type="search" placeholder="Search users..." class="search-input">
+                </div>
+                <div class="data-table text-box">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Role</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>001</td>
+                                <td>John Doe</td>
+                                <td>john@example.com</td>
+                                <td>User</td>
+                                <td><span class="status active">Active</span></td>
+                                <td>
+                                    <button class="edit-btn">Edit</button>
+                                    <button class="delete-btn">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>002</td>
+                                <td>Sarah Smith</td>
+                                <td>sarah@example.com</td>
+                                <td>User</td>
+                                <td><span class="status inactive">Inactive</span></td>
+                                <td>
+                                    <button class="edit-btn">Edit</button>
+                                    <button class="delete-btn">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Content Section -->
+            <section id="content" class="admin-section">
+                <h1>Content Management</h1>
+                <div class="content-tabs">
+                    <button class="tab-btn active" data-tab="pages">Pages</button>
+                    <button class="tab-btn" data-tab="portfolio">Portfolio</button>
+                    <button class="tab-btn" data-tab="services">Services</button>
+                </div>
+                <div class="content-editor text-box">
+                    <h3>Edit Homepage Content</h3>
+                    <div class="editor-form">
+                        <div class="form-group">
+                            <label>Page Title</label>
+                            <input type="text" value="Welcome to the Future" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label>Hero Subtitle</label>
+                            <textarea class="form-textarea">Advanced Technology Solutions</textarea>
+                        </div>
+                        <button class="save-btn">Save Changes</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Messages Section -->
+            <section id="messages" class="admin-section">
+                <h1>Contact Messages</h1>
+                <div class="messages-list">
+                    <div class="message-item text-box hover-slide">
+                        <div class="message-header">
+                            <h4>Project Inquiry</h4>
+                            <span class="message-time">2 hours ago</span>
+                        </div>
+                        <p class="message-sender">From: client@company.com</p>
+                        <p class="message-preview">Hi, I'm interested in your web development services...</p>
+                        <div class="message-actions">
+                            <button class="reply-btn">Reply</button>
+                            <button class="archive-btn">Archive</button>
+                        </div>
+                    </div>
+                    <div class="message-item text-box hover-slide">
+                        <div class="message-header">
+                            <h4>Support Request</h4>
+                            <span class="message-time">5 hours ago</span>
+                        </div>
+                        <p class="message-sender">From: user@example.com</p>
+                        <p class="message-preview">I need help with my account settings...</p>
+                        <div class="message-actions">
+                            <button class="reply-btn">Reply</button>
+                            <button class="archive-btn">Archive</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Analytics Section -->
+            <section id="analytics" class="admin-section">
+                <h1>Analytics & Reports</h1>
+                <div class="analytics-grid">
+                    <div class="chart-container text-box">
+                        <h3>Traffic Overview</h3>
+                        <div class="chart-placeholder">📊 Chart will be displayed here</div>
+                    </div>
+                    <div class="chart-container text-box">
+                        <h3>User Growth</h3>
+                        <div class="chart-placeholder">📈 Chart will be displayed here</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Settings Section -->
+            <section id="settings" class="admin-section">
+                <h1>System Settings</h1>
+                <div class="settings-grid">
+                    <div class="settings-card text-box">
+                        <h3>🔧 General Settings</h3>
+                        <div class="setting-item">
+                            <label>Site Title</label>
+                            <input type="text" value="Futuristic Website" class="form-input">
+                        </div>
+                        <div class="setting-item">
+                            <label>Maintenance Mode</label>
+                            <label class="toggle">
+                                <input type="checkbox">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="settings-card text-box">
+                        <h3>🔒 Security Settings</h3>
+                        <div class="setting-item">
+                            <label>Two-Factor Authentication</label>
+                            <label class="toggle">
+                                <input type="checkbox" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="setting-item">
+                            <label>Session Timeout (minutes)</label>
+                            <input type="number" value="30" class="form-input">
+                        </div>
+                    </div>
+                </div>
+                <button class="save-settings-btn">Save All Settings</button>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        // Admin Panel Navigation
+        function initAdminNavigation() {
+            const menuLinks = document.querySelectorAll('.menu-link');
+            const sections = document.querySelectorAll('.admin-section');
+            
+            menuLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetSection = link.getAttribute('data-section');
+                    
+                    // Remove active classes
+                    menuLinks.forEach(l => l.classList.remove('active'));
+                    sections.forEach(s => s.classList.remove('active'));
+                    
+                    // Add active classes
+                    link.classList.add('active');
+                    document.getElementById(targetSection).classList.add('active');
+                });
+            });
+        }
+
+        // Tab functionality for content section
+        function initContentTabs() {
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                });
+            });
+        }
+
+        // Mock data operations
+        function initDataOperations() {
+            // Edit buttons
+            document.querySelectorAll('.edit-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    alert('Edit functionality would open a modal here');
+                });
+            });
+            
+            // Delete buttons
+            document.querySelectorAll('.delete-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    if(confirm('Are you sure you want to delete this item?')) {
+                        btn.closest('tr').remove();
+                    }
+                });
+            });
+            
+            // Save buttons
+            document.querySelectorAll('.save-btn, .save-settings-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    btn.textContent = 'Saving...';
+                    setTimeout(() => {
+                        btn.textContent = 'Saved!';
+                        setTimeout(() => {
+                            btn.textContent = btn.classList.contains('save-settings-btn') ? 'Save All Settings' : 'Save Changes';
+                        }, 1000);
+                    }, 1000);
+                });
+            });
+        }
+
+        // Initialize admin panel
+        document.addEventListener('DOMContentLoaded', function() {
+            initAdminNavigation();
+            initContentTabs();
+            initDataOperations();
+        });
+    </script>
+
+</body>
+</html>

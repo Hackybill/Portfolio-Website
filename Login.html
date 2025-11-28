@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Futuristic Website</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="server-auth.js"></script>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="about.html" class="nav-link">About</a></li>
+            <li><a href="services.html" class="nav-link">Services</a></li>
+            <li><a href="portfolio.html" class="nav-link">Portfolio</a></li>
+            <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+        <div class="auth-buttons">
+            <button class="auth-btn login-btn active">Login</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <div class="login-container text-box slide-in-up">
+                <h2>Welcome Back</h2>
+                <p class="login-subtitle">Sign in to access your account</p>
+                
+                <form class="login-form">
+                    <div class="input-group">
+                        <input type="text" id="username" required>
+                        <label for="username">Username</label>
+                    </div>
+                    
+                    <div class="input-group">
+                        <input type="password" id="password" required>
+                        <label for="password">Password</label>
+                    </div>
+                    
+                    <button type="submit" class="login-submit-btn">Login</button>
+                    
+                    <div class="login-links">
+                        <a href="#" class="forgot-link">Forgot Password?</a>
+                    </div>
+                    
+                    <div class="register-prompt">
+                        <p>Don't have an account? <a href="register.html" class="register-link">Register Now</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Server-Integrated Login System
+        class ServerLoginHandler {
+            constructor() {
+                this.auth = new ServerAuth();
+                this.init();
+            }
+
+            init() {
+                this.setupLoginForm();
+                this.setupAnimations();
+            }
+
+            setupLoginForm() {
+                const form = document.querySelector('.login-form');
+                if (form) {
+                    form.addEventListener('submit', async (e) => {
+                        e.preventDefault();
+                        await this.handleLogin(e.target);
+                    });
+                }
+            }
+
+            async handleLogin(form) {
+                const username = form.username.value.trim();
+                const password = form.password.value;
+                const submitBtn = form.querySelector('.login-submit-btn');
+                
+                if (!username || !password) {
+                    this.showError('Please enter both username and password');
+                    return;
+                }
+                
+                submitBtn.textContent = 'Authenticating...';
+                submitBtn.disabled = true;
+                
+                // Simple login validation
+                const validUsers = {
+                    'admin': { password: 'admin123', role: 'admin' },
+                    'user': { password: 'user123', role: 'user' }
+                };
+                
+                // Check registered users
+                const registeredUsers = JSON.parse(localStorage.getItem('client_users') || '[]');
+                const registeredUser = registeredUsers.find(u => u.username === username);
+                
+                let user = null;
+                
+                if (validUsers[username] && validUsers[username].password === password) {
+                    user = { username, role: validUsers[username].role };
+                } else if (registeredUser && registeredUser.password === password) {
+                    user = { username: registeredUser.username, role: 'user' };
+                }
+                
+                if (user) {
+                    // Store session
+                    localStorage.setItem('auth_session', JSON.stringify({
+                        user,
+                        loginTime: Date.now()
+                    }));
+                    
+                    submitBtn.textContent = '✅ Login Successful!';
+                    this.showSuccess('🎉 Welcome back! Login successful.');
+                    
+                    setTimeout(() => {
+                        this.showSuccess('🔄 Redirecting...');
+                        setTimeout(() => {
+                            window.location.href = user.role === 'admin' ? 'admin.html' : 'index.html';
+                        }, 500);
+                    }, 1000);
+                } else {
+                    this.showError('Invalid credentials');
+                    submitBtn.textContent = 'Login';
+                    submitBtn.disabled = false;
+                }
+            }
+
+
+
+            showError(message) {
+                this.showMessage(message, 'error');
+            }
+
+            showSuccess(message) {
+                this.showMessage(message, 'success');
+            }
+
+            showMessage(message, type) {
+                let messageDiv = document.querySelector('.message');
+                if (!messageDiv) {
+                    messageDiv = document.createElement('div');
+                    messageDiv.className = 'message';
+                    document.querySelector('.login-form').prepend(messageDiv);
+                }
+                
+                messageDiv.textContent = message;
+                messageDiv.className = `message ${type}`;
+                messageDiv.style.display = 'block';
+                
+                setTimeout(() => {
+                    messageDiv.style.display = 'none';
+                }, 5000);
+            }
+
+            setupAnimations() {
+                // Same animations as main page
+                function initMouseTrail() {
+                    document.addEventListener('mousemove', (e) => {
+                        const trail = document.createElement('div');
+                        trail.className = 'mouse-trail';
+                        trail.style.left = e.clientX + 'px';
+                        trail.style.top = e.clientY + 'px';
+                        document.body.appendChild(trail);
+                        setTimeout(() => trail.remove(), 1000);
+                    });
+                }
+
+                function initRippleEffect() {
+                    document.addEventListener('click', (e) => {
+                        const ripple = document.createElement('div');
+                        ripple.className = 'ripple';
+                        ripple.style.left = e.clientX + 'px';
+                        ripple.style.top = e.clientY + 'px';
+                        document.body.appendChild(ripple);
+                        setTimeout(() => ripple.remove(), 600);
+                    });
+                }
+
+                function createFloatingElements() {
+                    for (let i = 0; i < 15; i++) {
+                        const element = document.createElement('div');
+                        element.className = 'floating-element';
+                        element.style.left = Math.random() * 100 + '%';
+                        element.style.animationDelay = Math.random() * 10 + 's';
+                        element.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                        document.body.appendChild(element);
+                    }
+                }
+
+                initMouseTrail();
+                initRippleEffect();
+                createFloatingElements();
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            new ServerLoginHandler();
+        });
+    </script>
+
+</body>
+</html>

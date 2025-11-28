@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - CyberArt</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        :root {
+            --neon-cyan: #00fff0;
+            --neon-pink: #ff3ec7;
+            --neon-red: #ff0040;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto;
+        }
+        body {
+            min-height: 100vh;
+            background: radial-gradient(1200px 600px at 10% 20%, rgba(255,0,64,0.08), transparent 6%),
+                        radial-gradient(900px 500px at 90% 80%, rgba(0,255,240,0.06), transparent 8%),
+                        #000000;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow-x: hidden;
+        }
+        .admin-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+        .admin-box {
+            width: 100%;
+            max-width: 450px;
+            padding: 40px 35px;
+            border-radius: 20px;
+            backdrop-filter: blur(20px);
+            background: linear-gradient(135deg, rgba(255, 0, 64, 0.08), rgba(0, 255, 240, 0.05));
+            border: 2px solid rgba(255, 0, 64, 0.3);
+            box-shadow: 0 0 40px rgba(255, 0, 64, 0.2);
+        }
+        .admin-title {
+            text-align: center;
+            color: var(--neon-red);
+            margin-bottom: 30px;
+            font-size: 32px;
+            font-weight: 700;
+            text-shadow: 0 0 20px rgba(255, 0, 64, 0.5);
+        }
+        .input-group {
+            margin-bottom: 25px;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 15px 18px;
+            border: 2px solid rgba(255, 0, 64, 0.3);
+            border-radius: 12px;
+            background: rgba(0, 0, 0, 0.4);
+            color: white;
+            font-size: 16px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+        .input-group input:focus {
+            border-color: var(--neon-red);
+            box-shadow: 0 0 25px rgba(255, 0, 64, 0.4);
+        }
+        .admin-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, var(--neon-red), var(--neon-pink));
+            border: none;
+            border-radius: 12px;
+            color: #000;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+        }
+        .admin-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 40px rgba(255, 0, 64, 0.5);
+        }
+        .user-login-link {
+            display: block;
+            text-align: center;
+            padding: 12px;
+            border: 2px solid rgba(0, 255, 240, 0.5);
+            border-radius: 12px;
+            color: var(--neon-cyan);
+            background: rgba(0, 0, 0, 0.3);
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .message {
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+            display: none;
+        }
+        .error { background: rgba(255, 0, 0, 0.1); color: #ff6b6b; }
+        .success { background: rgba(0, 255, 0, 0.1); color: #51cf66; }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <div class="admin-box">
+            <h1 class="admin-title">🔐 Admin Access</h1>
+            <div id="message" class="message"></div>
+            <form id="adminForm">
+                <div class="input-group">
+                    <input type="text" id="adminUsername" placeholder="Admin Username" required>
+                </div>
+                <div class="input-group">
+                    <input type="password" id="adminPassword" placeholder="Admin Password" required>
+                </div>
+                <div class="input-group">
+                    <input type="text" id="adminKey" placeholder="Admin Secret Key" required>
+                </div>
+                <button type="submit" class="admin-btn">Admin Login</button>
+                <a href="Login.html" class="user-login-link">👤 User Login</a>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('adminForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const username = document.getElementById('adminUsername').value.trim();
+            const password = document.getElementById('adminPassword').value;
+            const secretKey = document.getElementById('adminKey').value.trim();
+            const messageDiv = document.getElementById('message');
+            
+            try {
+                const response = await fetch('http://localhost:5001/api/admin-login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, password, secretKey })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    messageDiv.textContent = 'Admin login successful!';
+                    messageDiv.className = 'message success';
+                    messageDiv.style.display = 'block';
+                    localStorage.setItem('userLoggedIn', 'true');
+                    localStorage.setItem('userRole', 'admin');
+                    localStorage.setItem('user', JSON.stringify(data.admin));
+                    setTimeout(() => window.location.href = 'index.html', 1500);
+                } else {
+                    messageDiv.textContent = data.message;
+                    messageDiv.className = 'message error';
+                    messageDiv.style.display = 'block';
+                }
+            } catch (error) {
+                messageDiv.textContent = 'Connection error';
+                messageDiv.className = 'message error';
+                messageDiv.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>

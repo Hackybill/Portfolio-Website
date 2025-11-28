@@ -1,0 +1,3 @@
+@echo off
+echo Starting Live Data Viewer...
+node admin-dashboard.js

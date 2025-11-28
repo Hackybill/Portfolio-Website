@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Futuristic Website</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="about.html" class="nav-link">About</a></li>
+            <li><a href="services.html" class="nav-link">Services</a></li>
+            <li><a href="portfolio.html" class="nav-link active">Portfolio</a></li>
+            <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <div class="profile-section text-box slide-in-up">
+                <div class="profile-image">
+                    <img src="Lokesh.jpg" alt="Profile Picture">
+                </div>
+                <div class="profile-info">
+                    <h1 class="hero-title">Lokesh Sharma</h1>
+                    <h2 class="profile-title">Full Stack Developer</h2>
+                    <p class="profile-description">Passionate developer with expertise in modern web technologies, AI/ML, and mobile app development. Creating innovative solutions for the digital world.</p>
+                    <div class="profile-skills">
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">AI/ML</span>
+                        <span class="skill-tag">Mobile Apps</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Filter -->
+    <section class="portfolio-section">
+        <div class="container">
+            <div class="portfolio-filter">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="web">Web</button>
+                <button class="filter-btn" data-filter="mobile">Mobile</button>
+                <button class="filter-btn" data-filter="ai">AI</button>
+            </div>
+            
+            <div class="portfolio-grid">
+                <div class="portfolio-item" data-category="web">
+                    <div class="portfolio-image"></div>
+                    <div class="portfolio-content">
+                        <h3>E-commerce Platform</h3>
+                        <p>Modern online shopping experience with AI recommendations</p>
+                        <span class="portfolio-tech">React, Node.js, MongoDB</span>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="mobile">
+                    <div class="portfolio-image"></div>
+                    <div class="portfolio-content">
+                        <h3>Fitness Tracker App</h3>
+                        <p>Health and wellness mobile application with real-time tracking</p>
+                        <span class="portfolio-tech">React Native, Firebase</span>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="ai">
+                    <div class="portfolio-image"></div>
+                    <div class="portfolio-content">
+                        <h3>AI Chatbot System</h3>
+                        <p>Intelligent customer service bot with natural language processing</p>
+                        <span class="portfolio-tech">Python, TensorFlow, NLP</span>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="web">
+                    <div class="portfolio-image"></div>
+                    <div class="portfolio-content">
+                        <h3>Dashboard Analytics</h3>
+                        <p>Real-time data visualization platform for business intelligence</p>
+                        <span class="portfolio-tech">Vue.js, D3.js, Express</span>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="mobile">
+                    <div class="portfolio-image"></div>
+                    <div class="portfolio-content">
+                        <h3>AR Shopping App</h3>
+                        <p>Augmented reality shopping experience for furniture placement</p>
+                        <span class="portfolio-tech">Flutter, ARCore, ARKit</span>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="ai">
+                    <div class="portfolio-image"></div>
+                    <div class="portfolio-content">
+                        <h3>Image Recognition API</h3>
+                        <p>Computer vision API for automated image classification and tagging</p>
+                        <span class="portfolio-tech">Python, OpenCV, AWS</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Portfolio filter functionality
+        function initPortfolioFilter() {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const portfolioItems = document.querySelectorAll('.portfolio-item');
+            
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const filter = btn.getAttribute('data-filter');
+                    
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    
+                    portfolioItems.forEach(item => {
+                        if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                            item.style.display = 'block';
+                            item.style.opacity = '1';
+                            item.style.transform = 'translateY(0)';
+                        } else {
+                            item.style.opacity = '0';
+                            item.style.transform = 'translateY(20px)';
+                            setTimeout(() => {
+                                item.style.display = 'none';
+                            }, 300);
+                        }
+                    });
+                });
+            });
+        }
+
+        // Same animations as main page
+        function initMouseTrail() {
+            document.addEventListener('mousemove', (e) => {
+                const trail = document.createElement('div');
+                trail.className = 'mouse-trail';
+                trail.style.left = e.clientX + 'px';
+                trail.style.top = e.clientY + 'px';
+                document.body.appendChild(trail);
+                setTimeout(() => trail.remove(), 1000);
+            });
+        }
+
+        function initRippleEffect() {
+            document.addEventListener('click', (e) => {
+                const ripple = document.createElement('div');
+                ripple.className = 'ripple';
+                ripple.style.left = e.clientX + 'px';
+                ripple.style.top = e.clientY + 'px';
+                document.body.appendChild(ripple);
+                setTimeout(() => ripple.remove(), 600);
+            });
+        }
+
+        function createFloatingElements() {
+            for (let i = 0; i < 15; i++) {
+                const element = document.createElement('div');
+                element.className = 'floating-element';
+                element.style.left = Math.random() * 100 + '%';
+                element.style.animationDelay = Math.random() * 10 + 's';
+                element.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                document.body.appendChild(element);
+            }
+        }
+
+        function initTiltEffect() {
+            document.querySelectorAll('.portfolio-item').forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    const rotateX = (y - centerY) / 10;
+                    const rotateY = (centerX - x) / 10;
+                    
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(20px)`;
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px)';
+                });
+            });
+        }
+
+        function initScrollAnimations() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate');
+                    }
+                });
+            });
+            
+            document.querySelectorAll('.portfolio-item, .filter-btn').forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            initPortfolioFilter();
+            initMouseTrail();
+            initRippleEffect();
+            createFloatingElements();
+            initTiltEffect();
+            initScrollAnimations();
+        });
+    </script>
+
+</body>
+</html>

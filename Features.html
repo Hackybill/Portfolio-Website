@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Features | Web Development World</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* ============================================================
+           GLOBAL STYLES
+        ============================================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a, #1a1a2e, #16213e);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* ============================================================
+           NAVBAR
+        ============================================================ */
+        .navbar {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            padding: 18px 0;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(15px);
+            border-bottom: 2px solid cyan;
+            animation: borderRGB 5s infinite linear;
+            z-index: 9999;
+            box-shadow: 0 4px 20px rgba(0, 255, 255, 0.2);
+        }
+
+        @keyframes borderRGB {
+            0% { border-color: #ff0066; }
+            25% { border-color: #00eaff; }
+            50% { border-color: #15ff00; }
+            75% { border-color: #ff00ff; }
+            100% { border-color: #ff0066; }
+        }
+
+        .navbar ul {
+            display: flex;
+            justify-content: center;
+            gap: 45px;
+            list-style: none;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 600;
+            position: relative;
+            transition: 0.4s ease;
+            padding: 8px 16px;
+            border-radius: 8px;
+        }
+
+        .navbar a:hover {
+            color: cyan;
+            transform: translateY(-3px);
+            background: rgba(0, 255, 255, 0.1);
+        }
+
+        .navbar a::after {
+            content: "";
+            position: absolute;
+            width: 0%;
+            height: 3px;
+            left: 50%;
+            bottom: -6px;
+            transform: translateX(-50%);
+            background: linear-gradient(90deg, #ff0066, #00eaff, #15ff00);
+            border-radius: 10px;
+            transition: 0.4s ease;
+        }
+
+        .navbar a:hover::after {
+            width: 100%;
+        }
+
+        .navbar a.active {
+            color: cyan;
+            background: rgba(0, 255, 255, 0.15);
+        }
+
+        /* ============================================================
+           HERO SECTION
+        ============================================================ */
+        .hero {
+            text-align: center;
+            padding: 80px 20px 60px;
+            animation: fadeIn 1s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, #ff0066, #00eaff, #15ff00, #ff00ff);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientText 5s ease infinite;
+            text-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+        }
+
+        @keyframes gradientText {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: #b8d4e8;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+
+        /* ============================================================
+           FEATURES SECTION
+        ============================================================ */
+        .features {
+            padding: 60px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 42px;
+            margin-bottom: 60px;
+            color: cyan;
+            text-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { text-shadow: 0 0 20px rgba(0, 255, 255, 0.6); }
+            50% { text-shadow: 0 0 40px rgba(0, 255, 255, 0.9); }
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+
+        .feature-card {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+            padding: 40px 30px;
+            border-radius: 20px;
+            border: 2px solid rgba(0, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
+            animation: slideUp 0.6s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 255, 255, 0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-15px) scale(1.03);
+            border-color: cyan;
+            box-shadow: 0 20px 50px rgba(0, 255, 255, 0.3);
+            background: linear-gradient(145deg, rgba(0, 255, 255, 0.1), rgba(255, 0, 255, 0.05));
+        }
+
+        .feature-card h3 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: #00eaff;
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-card p {
+            font-size: 17px;
+            color: #c8e0f0;
+            line-height: 1.7;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ============================================================
+           DETAILED FEATURES SECTION
+        ============================================================ */
+        .detailed-features {
+            padding: 80px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .detail-card {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            margin-bottom: 100px;
+            animation: fadeInLeft 0.8s ease;
+        }
+
+        .detail-card:nth-child(even) {
+            direction: rtl;
+            animation: fadeInRight 0.8s ease;
+        }
+
+        .detail-card:nth-child(even) > * {
+            direction: ltr;
+        }
+
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .detail-content h2 {
+            font-size: 38px;
+            margin-bottom: 20px;
+            color: #ff0066;
+            text-shadow: 0 0 15px rgba(255, 0, 102, 0.5);
+        }
+
+        .detail-content p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #d0e8f5;
+            margin-bottom: 25px;
+        }
+
+        .detail-content ul {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .detail-content li {
+            padding: 12px 0;
+            font-size: 17px;
+            color: #b8d4e8;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .detail-content li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #15ff00;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .detail-visual {
+            background: linear-gradient(135deg, rgba(0, 255, 255, 0.1), rgba(255, 0, 255, 0.1));
+            border: 2px solid rgba(0, 255, 255, 0.3);
+            border-radius: 20px;
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 350px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .detail-visual::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 255, 255, 0.3), transparent);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(30px, -30px); }
+        }
+
+        .visual-icon {
+            font-size: 120px;
+            filter: drop-shadow(0 0 30px currentColor);
+            animation: rotate3D 10s linear infinite;
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes rotate3D {
+            0% { transform: rotateY(0deg) rotateX(0deg); }
+            50% { transform: rotateY(180deg) rotateX(10deg); }
+            100% { transform: rotateY(360deg) rotateX(0deg); }
+        }
+
+        /* ============================================================
+           IMAGE SLIDER DEMO
+        ============================================================ */
+        .slider-demo {
+            padding: 80px 40px;
+            text-align: center;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6));
+        }
+
+        .slider-demo h2 {
+            font-size: 42px;
+            margin-bottom: 50px;
+            color: #15ff00;
+            text-shadow: 0 0 20px rgba(21, 255, 0, 0.6);
+        }
+
+        .slider-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 20px;
+            border: 3px solid cyan;
+            box-shadow: 0 0 50px rgba(0, 255, 255, 0.4);
+        }
+
+        .slider-track {
+            display: flex;
+            animation: slide 20s linear infinite;
+        }
+
+        @keyframes slide {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .slider-track img {
+            width: 400px;
+            height: 250px;
+            object-fit: cover;
+            margin: 0 10px;
+            border-radius: 15px;
+            filter: brightness(0.9);
+            transition: 0.3s;
+        }
+
+        .slider-track img:hover {
+            filter: brightness(1.1);
+            transform: scale(1.05);
+        }
+
+        /* ============================================================
+           CTA SECTION
+        ============================================================ */
+        .cta-section {
+            text-align: center;
+            padding: 100px 20px;
+            background: linear-gradient(135deg, rgba(255, 0, 102, 0.1), rgba(0, 234, 255, 0.1));
+        }
+
+        .cta-section h2 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: white;
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+        }
+
+        .cta-section p {
+            font-size: 20px;
+            color: #b8d4e8;
+            margin-bottom: 40px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn {
+            padding: 18px 40px;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-btn.primary {
+            background: linear-gradient(90deg, #00eaff, #ff00ff);
+            color: white;
+            box-shadow: 0 10px 30px rgba(0, 234, 255, 0.3);
+        }
+
+        .cta-btn.primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 234, 255, 0.5);
+        }
+
+        .cta-btn.secondary {
+            background: transparent;
+            border: 2px solid cyan;
+            color: cyan;
+        }
+
+        .cta-btn.secondary:hover {
+            background: cyan;
+            color: black;
+            transform: translateY(-5px);
+        }
+
+        /* ============================================================
+           FOOTER
+        ============================================================ */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(0, 0, 0, 0.8);
+            border-top: 2px solid rgba(0, 255, 255, 0.3);
+            margin-top: 60px;
+        }
+
+        footer p {
+            color: #b8d4e8;
+            font-size: 16px;
+        }
+
+        /* ============================================================
+           RESPONSIVE
+        ============================================================ */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 36px; }
+            .hero p { font-size: 16px; }
+            .feature-grid { grid-template-columns: 1fr; }
+            .detail-card {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .detail-card:nth-child(even) { direction: ltr; }
+            .navbar ul { gap: 20px; font-size: 14px; }
+            .slider-track img { width: 300px; height: 200px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Enhanced Navbar -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="About.html" class="nav-link">About</a></li>
+            <li><a href="Contact.html" class="nav-link">Contact</a></li>
+            <li><a href="Register.html" class="nav-link">Register</a></li>
+            <li><a href="Login.html" class="nav-link">Login</a></li>
+            <li><a href="Features.html" class="Features active">Features</a></li>
+        </ul>
+    </nav>
+
+    <!-- Enhanced Hero Section -->
+    <section class="hero">
+        <!-- Morphing background shapes -->
+        <div class="morphing-bg" style="top: 10%; left: 10%; animation-delay: 0s;"></div>
+        <div class="morphing-bg" style="top: 60%; right: 10%; animation-delay: 2s;"></div>
+        <div class="morphing-bg" style="bottom: 20%; left: 50%; animation-delay: 4s;"></div>
+        
+        <h1 class="title glitch holographic" data-text="🚀 Amazing Features 🚀">🚀 Amazing Features 🚀</h1>
+        <p class="subtitle typing-text color-shift">Discover what makes our platform stand out with cutting-edge technology and stunning design</p>
+    </section>
+
+    <!-- MAIN FEATURES -->
+    <section class="features">
+        <h2 class="section-title holographic">✨ Core Features</h2>
+        
+        <div class="feature-grid">
+            <div class="feature-card interactive-hover pulse-glow breathe stagger-1 rainbow-border">
+                <h3 class="neon-pulse wobble">🌈 Neon UI</h3>
+                <p class="fade-in-up">Experience next-level glowing neon interface with vibrant colors, smooth gradients, and eye-catching effects that bring your content to life.</p>
+            </div>
+
+            <div class="feature-card interactive-hover pulse-glow float stagger-2 rainbow-border">
+                <h3 class="neon-pulse swing">⚡ Smooth Transitions</h3>
+                <p class="fade-in-up">Everything feels lively with animated motion. Every interaction is carefully crafted with fluid animations that enhance user experience.</p>
+            </div>
+
+            <div class="feature-card interactive-hover pulse-glow">
+                <h3>🎬 Picture Slider</h3>
+                <p>Dynamic image slideshow built into the hero section. Showcase your content with automatic, seamless transitions that captivate visitors.</p>
+            </div>
+
+            <div class="feature-card interactive-hover pulse-glow">
+                <h3>🔐 Secure Authentication</h3>
+                <p>Built-in user registration and login system with JWT tokens, encrypted passwords, and secure session management.</p>
+            </div>
+
+            <div class="feature-card interactive-hover pulse-glow">
+                <h3>📱 Fully Responsive</h3>
+                <p>Perfect display on all devices - desktop, tablet, and mobile. Adaptive design that looks stunning everywhere.</p>
+            </div>
+
+            <div class="feature-card interactive-hover pulse-glow">
+                <h3>🎨 Modern Design</h3>
+                <p>Contemporary UI/UX with glassmorphism effects, gradient backgrounds, and attention to every visual detail.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- DETAILED FEATURES -->
+    <section class="detailed-features">
+        <!-- Feature 1: Neon UI -->
+        <div class="detail-card">
+            <div class="detail-content">
+                <h2>🌈 Stunning Neon Interface</h2>
+                <p>Our neon UI design isn't just beautiful—it's functional. Every element is carefully crafted to provide visual feedback while maintaining excellent readability.</p>
+                <ul>
+                    <li>RGB color animations that cycle smoothly</li>
+                    <li>Glowing effects on hover and focus</li>
+                    <li>High contrast for better accessibility</li>
+                    <li>Customizable color schemes</li>
+                    <li>Dark mode optimized for night usage</li>
+                </ul>
+            </div>
+            <div class="detail-visual">
+                <div class="visual-icon">🌈</div>
+            </div>
+        </div>
+
+        <!-- Feature 2: Smooth Transitions -->
+        <div class="detail-card">
+            <div class="detail-content">
+                <h2>⚡ Buttery Smooth Animations</h2>
+                <p>Experience seamless transitions throughout the entire platform. Every click, hover, and scroll is enhanced with carefully timed animations.</p>
+                <ul>
+                    <li>60 FPS smooth animations</li>
+                    <li>GPU-accelerated transforms</li>
+                    <li>Micro-interactions on every element</li>
+                    <li>Loading animations that engage users</li>
+                    <li>Page transitions that feel natural</li>
+                </ul>
+            </div>
+            <div class="detail-visual">
+                <div class="visual-icon">⚡</div>
+            </div>
+        </div>
+
+        <!-- Feature 3: Picture Slider -->
+        <div class="detail-card">
+            <div class="detail-content">
+                <h2>🎬 Dynamic Content Slider</h2>
+                <p>Showcase your best content with our advanced slider system. Automatic playback, smooth transitions, and touch-friendly controls.</p>
+                <ul>
+                    <li>Auto-play with adjustable speed</li>
+                    <li>Touch and swipe gestures</li>
+                    <li>Infinite loop capability</li>
+                    <li>Lazy loading for performance</li>
+                    <li>Fully customizable styling</li>
+                </ul>
+            </div>
+            <div class="detail-visual">
+                <div class="visual-icon">🎬</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDER DEMO -->
+    <section class="slider-demo">
+        <h2>🎬 See The Slider In Action</h2>
+        <div class="slider-container">
+            <div class="slider-track">
+                <img src="https://picsum.photos/400/250?random=1" alt="Slide 1">
+                <img src="https://picsum.photos/400/250?random=2" alt="Slide 2">
+                <img src="https://picsum.photos/400/250?random=3" alt="Slide 3">
+                <img src="https://picsum.photos/400/250?random=4" alt="Slide 4">
+                <img src="https://picsum.photos/400/250?random=5" alt="Slide 5">
+                <!-- Duplicate for seamless loop -->
+                <img src="https://picsum.photos/400/250?random=1" alt="Slide 1">
+                <img src="https://picsum.photos/400/250?random=2" alt="Slide 2">
+                <img src="https://picsum.photos/400/250?random=3" alt="Slide 3">
+                <img src="https://picsum.photos/400/250?random=4" alt="Slide 4">
+                <img src="https://picsum.photos/400/250?random=5" alt="Slide 5">
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="cta-section">
+        <h2>Ready to Get Started? 🚀</h2>
+        <p>Join thousands of users who are already enjoying these amazing features!</p>
+        <div class="cta-buttons">
+            <a href="Regsiter.html" class="cta-btn primary">Sign Up Now</a>
+            <a href="contact.html" class="cta-btn secondary">Learn More</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2024 Web Development World • Built with ❤️ and Code</p>
+    </footer>
+
+
+<script>
+// Enhanced scroll reveal animation
+function initAdvancedScrollAnimations() {
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+                
+                // Add stagger animation for cards
+                if (entry.target.classList.contains('feature-grid') || 
+                    entry.target.classList.contains('detailed-features')) {
+                    const cards = entry.target.querySelectorAll('.feature-card, .detail-card');
+                    cards.forEach((card, index) => {
+                        setTimeout(() => {
+                            card.style.animation = `slideInUp 0.8s ease-out ${index * 0.1}s both`;
+                        }, index * 100);
+                    });
+                }
+            }
+        });
+    }, observerOptions);
+    
+    // Observe all sections and cards
+    document.querySelectorAll('section, .feature-card, .detail-card').forEach(el => {
+        el.classList.add('scroll-reveal');
+        observer.observe(el);
+    });
+}
+
+// Particle system
+function createParticleSystem() {
+    const hero = document.querySelector('.hero');
+    if (!hero) return;
+    
+    const particlesContainer = document.createElement('div');
+    particlesContainer.className = 'particles';
+    hero.appendChild(particlesContainer);
+    
+    function createParticle() {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.animationDelay = Math.random() * 10 + 's';
+        particle.style.animationDuration = (Math.random() * 5 + 8) + 's';
+        particlesContainer.appendChild(particle);
+        
+        setTimeout(() => {
+            if (particle.parentNode) {
+                particle.parentNode.removeChild(particle);
+            }
+        }, 15000);
+    }
+    
+    setInterval(createParticle, 2000);
+    for (let i = 0; i < 5; i++) {
+        setTimeout(createParticle, i * 1000);
+    }
+}
+
+// Enhanced card hover effects
+function initEnhancedHoverEffects() {
+    const cards = document.querySelectorAll('.feature-card, .detail-card');
+    
+    cards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            card.style.transform = 'translateY(-20px) scale(1.03) rotateX(5deg)';
+            card.style.boxShadow = '0 30px 60px rgba(0,255,240,0.3), 0 0 50px rgba(255,62,199,0.2)';
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'translateY(0) scale(1) rotateX(0deg)';
+            card.style.boxShadow = '';
+        });
+        
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const rotateX = (y - centerY) / 10;
+            const rotateY = (centerX - x) / 10;
+            
+            card.style.transform = `translateY(-20px) scale(1.03) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        });
+    });
+}
+
+// Add floating action button
+function addFloatingButton() {
+    const floatingBtn = document.createElement('a');
+    floatingBtn.href = '#';
+    floatingBtn.className = 'floating-btn';
+    floatingBtn.innerHTML = '↑';
+    floatingBtn.title = 'Back to top';
+    
+    floatingBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    
+    document.body.appendChild(floatingBtn);
+    
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            floatingBtn.style.opacity = '1';
+            floatingBtn.style.visibility = 'visible';
+        } else {
+            floatingBtn.style.opacity = '0';
+            floatingBtn.style.visibility = 'hidden';
+        }
+    });
+}
+
+// Initialize all enhanced features
+document.addEventListener('DOMContentLoaded', () => {
+    initAdvancedScrollAnimations();
+    createParticleSystem();
+    initEnhancedHoverEffects();
+    addFloatingButton();
+    
+    // Add loading animation
+    document.body.style.opacity = '0';
+    setTimeout(() => {
+        document.body.style.transition = 'opacity 1s ease';
+        document.body.style.opacity = '1';
+    }, 100);
+});
+</script>
+
+</body>
+</html>

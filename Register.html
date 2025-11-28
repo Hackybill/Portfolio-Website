@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Futuristic Website</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="server-auth.js"></script>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="about.html" class="nav-link">About</a></li>
+            <li><a href="services.html" class="nav-link">Services</a></li>
+            <li><a href="portfolio.html" class="nav-link">Portfolio</a></li>
+            <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <div class="login-container text-box slide-in-up">
+                <h2>Create Account</h2>
+                <p class="login-subtitle">Join us and start your journey</p>
+                
+                <form class="login-form">
+                    <div class="input-group">
+                        <input type="text" id="fullname" required>
+                        <label for="fullname">Full Name</label>
+                    </div>
+                    
+                    <div class="input-group">
+                        <input type="email" id="email" required>
+                        <label for="email">Email</label>
+                    </div>
+                    
+                    <div class="input-group">
+                        <input type="text" id="username" required>
+                        <label for="username">Username</label>
+                    </div>
+                    
+                    <div class="input-group">
+                        <input type="password" id="password" required>
+                        <label for="password">Password</label>
+                    </div>
+                    
+                    <button type="submit" class="login-submit-btn">Register</button>
+                    
+                    <div class="register-prompt">
+                        <p>Already have an account? <a href="login.html" class="register-link">Login Now</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Registration Handler
+        class RegisterHandler {
+            constructor() {
+                this.auth = new ServerAuth();
+                this.init();
+            }
+
+            init() {
+                this.setupRegisterForm();
+                this.setupAnimations();
+            }
+
+            setupRegisterForm() {
+                const form = document.querySelector('.login-form');
+                if (form) {
+                    form.addEventListener('submit', async (e) => {
+                        e.preventDefault();
+                        await this.handleRegister(e.target);
+                    });
+                }
+            }
+
+            async handleRegister(form) {
+                const fullname = this.auth.sanitizeInput(form.fullname.value);
+                const email = this.auth.sanitizeInput(form.email.value);
+                const username = this.auth.sanitizeInput(form.username.value);
+                const password = form.password.value;
+                const submitBtn = form.querySelector('.login-submit-btn');
+                
+                if (!fullname || !email || !username || !password) {
+                    this.showError('Please fill in all fields');
+                    return;
+                }
+                
+                if (password.length < 6) {
+                    this.showError('Password must be at least 6 characters');
+                    return;
+                }
+                
+                submitBtn.textContent = 'Creating Account...';
+                submitBtn.disabled = true;
+                
+                try {
+                    const result = await this.auth.register({
+                        fullname,
+                        email,
+                        username,
+                        password
+                    });
+                    
+                    if (result.success) {
+                        submitBtn.textContent = '✅ Account Created!';
+                        this.showSuccess('🎉 Account created successfully! You can now login with your credentials.');
+                        
+                        setTimeout(() => {
+                            this.showSuccess('🔄 Redirecting to login page...');
+                            setTimeout(() => {
+                                window.location.href = 'login.html';
+                            }, 1000);
+                        }, 2000);
+                    } else {
+                        this.showError(result.error);
+                        submitBtn.textContent = 'Register';
+                        submitBtn.disabled = false;
+                    }
+                    
+                } catch (error) {
+                    this.showError('Registration failed. Please try again.');
+                    submitBtn.textContent = 'Register';
+                    submitBtn.disabled = false;
+                }
+            }
+
+            showError(message) {
+                this.showMessage(message, 'error');
+            }
+
+            showSuccess(message) {
+                this.showMessage(message, 'success');
+            }
+
+            showMessage(message, type) {
+                let messageDiv = document.querySelector('.message');
+                if (!messageDiv) {
+                    messageDiv = document.createElement('div');
+                    messageDiv.className = 'message';
+                    document.querySelector('.login-form').prepend(messageDiv);
+                }
+                
+                messageDiv.textContent = message;
+                messageDiv.className = `message ${type}`;
+                messageDiv.style.display = 'block';
+                
+                setTimeout(() => {
+                    messageDiv.style.display = 'none';
+                }, 5000);
+            }
+
+            setupAnimations() {
+                function initMouseTrail() {
+                    document.addEventListener('mousemove', (e) => {
+                        const trail = document.createElement('div');
+                        trail.className = 'mouse-trail';
+                        trail.style.left = e.clientX + 'px';
+                        trail.style.top = e.clientY + 'px';
+                        document.body.appendChild(trail);
+                        setTimeout(() => trail.remove(), 1000);
+                    });
+                }
+
+                function initRippleEffect() {
+                    document.addEventListener('click', (e) => {
+                        const ripple = document.createElement('div');
+                        ripple.className = 'ripple';
+                        ripple.style.left = e.clientX + 'px';
+                        ripple.style.top = e.clientY + 'px';
+                        document.body.appendChild(ripple);
+                        setTimeout(() => ripple.remove(), 600);
+                    });
+                }
+
+                function createFloatingElements() {
+                    for (let i = 0; i < 15; i++) {
+                        const element = document.createElement('div');
+                        element.className = 'floating-element';
+                        element.style.left = Math.random() * 100 + '%';
+                        element.style.animationDelay = Math.random() * 10 + 's';
+                        element.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                        document.body.appendChild(element);
+                    }
+                }
+
+                initMouseTrail();
+                initRippleEffect();
+                createFloatingElements();
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            new RegisterHandler();
+        });
+    </script>
+
+</body>
+</html>
